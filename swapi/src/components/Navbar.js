@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 const Navbar = () => {
    return (
       <Flex
@@ -11,6 +11,7 @@ const Navbar = () => {
          h="52px"
          boxShadow="0px 0px 10px rgba(0,0,0,0.25)"
       >
+         <Box>
          <Heading
             fontSize="17px"
             lineHeight="20px"
@@ -26,6 +27,8 @@ const Navbar = () => {
          >
             Ravn Star Wars Registry
          </Heading>
+         </Box>
+         
       </Flex>
    );
 };
