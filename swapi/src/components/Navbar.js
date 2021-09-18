@@ -12,23 +12,22 @@ const Navbar = () => {
          boxShadow="0px 0px 10px rgba(0,0,0,0.25)"
       >
          <Box>
-         <Heading
-            fontSize="17px"
-            lineHeight="20px"
-            letterSpacing="0.0125em"
-            fontStyle="normal"
-            fontWeight="bold"
-            color="#F2F2F2"
-            left="33px"
-            top="16px"
-            height="20px"
-            position="absolute"
-            display="flex"
-         >
-            Ravn Star Wars Registry
-         </Heading>
+            <Heading
+               fontSize="17px"
+               lineHeight="20px"
+               letterSpacing="0.0125em"
+               fontStyle="normal"
+               fontWeight="bold"
+               color="#F2F2F2"
+               left="33px"
+               top="16px"
+               height="20px"
+               position="absolute"
+               display="flex"
+            >
+               Ravn Star Wars Registry
+            </Heading>
          </Box>
-         
       </Flex>
    );
 };
