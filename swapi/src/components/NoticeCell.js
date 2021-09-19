@@ -3,7 +3,7 @@ import { Box, Heading } from "@chakra-ui/react";
 
 const FailedIndicator = () => {
    return (
-      <Box maxW="350px" h="56px" p="16px">
+      <Box minW="350px" h="56px" p="16px">
          <Heading
             fontSize="17px"
             fontWeight="bold"

@@ -5,10 +5,11 @@ import App from "./App";
 //Providers
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { relayStylePagination } from "@apollo/client/utilities";
 
 //Fonts
 import "./fonts/SF PRO DISPLAY/fonts.css";
-
+import "./index.css";
 //Theme
 const theme = extendTheme({
    fonts: {
@@ -23,7 +24,15 @@ const theme = extendTheme({
 //Apollo Client
 const client = new ApolloClient({
    uri: "https://swapi-graphql.netlify.app/.netlify/functions/index",
-   cache: new InMemoryCache(),
+   cache: new InMemoryCache({
+      typePolicies: {
+         Query: {
+            fields: {
+               allPeople: relayStylePagination(),
+            },
+         },
+      },
+   }),
 });
 
 //Rendering the app
