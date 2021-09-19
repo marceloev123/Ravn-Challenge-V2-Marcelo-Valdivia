@@ -29,3 +29,15 @@ Human Specie by default is null on the data, so I consider to render a deafult t
 ### Sixth Screen
 Final view result, pagination is on the way 
 ![SixthScreenshot](https://user-images.githubusercontent.com/64241651/133937369-4f6541c4-c501-4c6f-891c-553ebf27d60e.png)
+
+### Pagination
+Pagination implemented using a button, first 5 characters
+![Screenshot from 2021-09-19 16-10-40](https://user-images.githubusercontent.com/64241651/133943246-c72953c7-973e-4e53-92fb-1a56d8e37e1c.png)
+
+### Pagination Part 2
+Second group of 5 characters load
+![Screenshot from 2021-09-19 16-11-53](https://user-images.githubusercontent.com/64241651/133943274-06502d2e-493f-4ee4-8c32-9183849de70c.png)
+)
+
+### Demostration
+https://user-images.githubusercontent.com/64241651/133943298-bceb6e75-5dc1-4e64-95e5-6a0a6c2335cd.mp4
