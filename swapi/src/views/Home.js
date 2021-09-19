@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { Box, Flex, Heading } from "@chakra-ui/layout";
 import LoadingIndicator from "../components/LoadingIndicator/LoadingIndicator";
 
-import { gql, useQuery, useLazyQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import FailedIndicator from "../components/FailedIndicator";
+import PersonCell from "../components/PersonCell";
 
 const Home = () => {
    const [idx, setIdx] = useState(-1);
@@ -13,6 +14,12 @@ const Home = () => {
          allPeople {
             people {
                name
+               species {
+                  name
+               }
+               homeworld {
+                  name
+               }
             }
          }
       }
@@ -23,6 +30,14 @@ const Home = () => {
          person(personID: $id) {
             name
             eyeColor
+            hairColor
+            skinColor
+            birthYear
+            vehicleConnection {
+               vehicles {
+                  name
+               }
+            }
          }
       }
    `;
@@ -36,7 +51,14 @@ const Home = () => {
 
       if (error) return <FailedIndicator />;
 
-      return <Heading>{data?.person?.eyeColor}</Heading>;
+      return (
+         <Box>
+            <Heading>{data?.person?.eyeColor}</Heading>
+            <Heading>{data?.person?.hairColor}</Heading>
+            <Heading>{data?.person?.skinColor}</Heading>
+            <Heading>{data?.person?.birthYear}</Heading>
+         </Box>
+      );
    }
 
    function Characters() {
@@ -49,9 +71,13 @@ const Home = () => {
       return (
          <Box>
             {data?.allPeople?.people?.map((character, idx) => (
-               <Heading key={idx} onClick={() => setIdx(idx + 1)}>
-                  {character?.name}
-               </Heading>
+               <PersonCell
+                  key={idx}
+                  name={character?.name}
+                  specie={character?.species?.name}
+                  homeworldName={character?.homeworld?.name}
+                  onClick={() => setIdx(idx + 1)}
+               />
             ))}
          </Box>
       );
