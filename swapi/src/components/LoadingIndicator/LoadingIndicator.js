@@ -4,7 +4,6 @@ import "./LoadingIndicator.css";
 
 const LoadingIndicator = () => {
    return (
-      
       <Box maxW="350px" h="56px">
          <Flex direction="row" justifyContent="center" p="16px">
             <div className="lds-spinner">
@@ -24,7 +23,6 @@ const LoadingIndicator = () => {
 
             <Heading
                fontSize="17px"
-             
                lineHeight="20px"
                color="#828282"
                fontWeight="bold"
@@ -32,7 +30,6 @@ const LoadingIndicator = () => {
                alignItems="center"
                letterSpacing="0.0125em"
                ml="8px"
-          
             >
                Loading
             </Heading>
