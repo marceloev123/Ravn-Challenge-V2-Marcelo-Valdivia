@@ -7,9 +7,12 @@
 ![FirstScreenshot](https://user-images.githubusercontent.com/64241651/133698148-1f57e388-1ba1-455b-8779-a4ed79e1f95e.png)
 
 ### Second Screen
-Here we design the loading component and the first view about the left menu to display the characteres
+Here we design the loading and the failed response componens and the first view about the left menu to display the characteres
 
 ![SecondScreenshot](https://user-images.githubusercontent.com/64241651/133796717-89073179-cc8b-4ba0-a918-2c53255ea716.png)
+![SecondPart2Screenshot](https://user-images.githubusercontent.com/64241651/133937493-2ff56121-0955-46a4-a948-7dcbe2f24575.png)
+
+
 
 ### Third Screen
 PersonCell done (it could be better), details are in progress
@@ -18,7 +21,6 @@ PersonCell done (it could be better), details are in progress
 ### Fourth Screen
 DataCell, Section Header, Vehicles list done and validated by frontend
 ![FourthScreenshot](https://user-images.githubusercontent.com/64241651/133937268-41b0f6e8-0618-46d6-83ea-c16405f6387d.png)
-
 
 ### Fifth Screen
 Human Specie by default is null on the data, so I consider to render a deafult text for this, also, the arrow button is improved in this screenshot
