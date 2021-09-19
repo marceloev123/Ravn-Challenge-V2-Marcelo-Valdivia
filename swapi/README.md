@@ -41,3 +41,6 @@ Second group of 5 characters load
 
 ### Demostration
 https://user-images.githubusercontent.com/64241651/133943298-bceb6e75-5dc1-4e64-95e5-6a0a6c2335cd.mp4
+
+### Gitkraken resume
+![Gitkraken](https://user-images.githubusercontent.com/64241651/133943337-07da55a7-49d2-49b0-a8c1-e371a840a958.png)
