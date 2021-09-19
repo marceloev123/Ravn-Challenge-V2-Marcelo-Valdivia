@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from "@chakra-ui/layout";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 import "./LoadingIndicator.css";
 

@@ -1,12 +1,12 @@
 import React from "react";
-import { Box, Divider, Flex, Heading, Text } from "@chakra-ui/layout";
+import { Box, Divider, Flex, Heading, IconButton, Text } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
 const PersonCell = (props) => {
    return (
-      <Box w="375px" h="69px" onClick={props.onClick}>
+      <Box mawW="350px" h="69px" onClick={props.onClick}>
          <Flex direction="row">
-            <Box w="246px" pt="16px" pl="16px" pb="16px">
+            <Box w="307px" pt="16px" pl="16px" pr="16px" pb="16px">
                <Heading
                   fontSize="17px"
                   lineHeight="20px"
@@ -25,14 +25,22 @@ const PersonCell = (props) => {
                   letterSpacing="0.0125em"
                   color="#828282"
                >
-                  {props?.specie|| "Human"} from{" "}
-                  {props?.homeworldName}
+                  {props?.specie || "Human"} from {props?.homeworldName}
                </Text>
             </Box>
-            <ChevronRightIcon ml="81.59px" mt="30px" mr="24px" />
+            <IconButton
+               mt="auto"
+               mb="auto"
+               ml="81.59px"
+               mr="24px"
+               size="xs"
+               bg="white"
+               isRound
+               icon={<ChevronRightIcon w={6} h={6} />}
+            />
          </Flex>
 
-         <Divider w="359px" ml="16px" />
+         <Divider w="334px" ml="16px" />
       </Box>
    );
 };

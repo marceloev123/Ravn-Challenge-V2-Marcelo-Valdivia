@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 //Components
-import { Box, Flex, Heading } from "@chakra-ui/layout";
+import { Box, Divider, Flex, Heading, Table } from "@chakra-ui/react";
 import LoadingIndicator from "../components/LoadingIndicator/LoadingIndicator";
-
 import { gql, useQuery } from "@apollo/client";
-import FailedIndicator from "../components/FailedIndicator";
+import NoticeCell from "../components/NoticeCell";
 import PersonCell from "../components/PersonCell";
+import DataCell from "../components/DataCell";
 
 const Home = () => {
+   // Ok we use an index to make the onClick request, is not the best approach but its one way to do that
    const [idx, setIdx] = useState(-1);
+
+   //Here I fetch all the data
    const GET_CHARACTERES = gql`
       query {
          allPeople {
@@ -25,6 +28,7 @@ const Home = () => {
       }
    `;
 
+   // I get the detail of the character
    const GET_DETAIL = gql`
       query GetCharacterDetail($id: ID!) {
          person(personID: $id) {
@@ -42,31 +46,111 @@ const Home = () => {
       }
    `;
 
+   //The detail component
    function Detail(props) {
       const { loading, error, data } = useQuery(GET_DETAIL, {
          variables: { id: props.idx },
       });
 
+      let features = [
+         { heading: "Eye Color", value: data?.person?.eyeColor },
+         { heading: "Hair Color", value: data?.person?.hairColor },
+         { heading: "Skin Color", value: data?.person?.skinColor },
+         { heading: "Birth Year", value: data?.person?.birthYear },
+      ];
+
+      let vehicles = data?.person?.vehicleConnection?.vehicles;
+
       if (loading) return <LoadingIndicator />;
 
-      if (error) return <FailedIndicator />;
+      if (error) return <NoticeCell />;
 
       return (
-         <Box>
-            <Heading>{data?.person?.eyeColor}</Heading>
-            <Heading>{data?.person?.hairColor}</Heading>
-            <Heading>{data?.person?.skinColor}</Heading>
-            <Heading>{data?.person?.birthYear}</Heading>
-         </Box>
+         <Table justifyContent="center" maxW="890px" m="auto">
+            <Box w="375px" h="60px">
+               <Heading
+                  w="246px"
+                  fontStyle="normal"
+                  fontWeight="bold"
+                  fontSize="17px"
+                  lineHeight="20px"
+                  letterSpacing="0.0125em"
+                  color="#333333"
+                  textAlign="left"
+                  pt="32px"
+                  pl="16px"
+                  pr="16px"
+                  pb="8px"
+               >
+                  General Information
+               </Heading>
+            </Box>
+            {features.map((feature, idx) => (
+               <DataCell key={idx} heading={feature?.heading} value={feature?.value} />
+            ))}
+            <Box w="375px" h="60px">
+               <Heading
+                  w="246px"
+                  fontStyle="normal"
+                  fontWeight="bold"
+                  fontSize="17px"
+                  lineHeight="20px"
+                  letterSpacing="0.0125em"
+                  color="#333333"
+                  textAlign="left"
+                  pt="32px"
+                  pl="16px"
+                  pr="16px"
+                  pb="8px"
+               >
+                  Vehicles
+               </Heading>
+            </Box>
+            {(!!vehicles &&
+               !!vehicles.length &&
+               vehicles.map((vehicle, idx) => (
+                  <Flex direction="column">
+                     <Heading
+                        key="idx"
+                        fontStyle="normal"
+                        fontWeight="bold"
+                        fontSize="17px"
+                        lineHeight="20px"
+                        letterSpacing="0.0125em"
+                        color="#828282"
+                        textAlign="left"
+                        p="16px"
+                     >
+                        {vehicle?.name}
+                     </Heading>
+                     <Divider />
+                  </Flex>
+               ))) || (
+               <Heading
+                  key="idx"
+                  fontStyle="normal"
+                  fontWeight="bold"
+                  fontSize="17px"
+                  lineHeight="20px"
+                  letterSpacing="0.0125em"
+                  color="#828282"
+                  textAlign="left"
+                  p="16px"
+               >
+                  The character doesn't have vehicles
+               </Heading>
+            )}
+         </Table>
       );
    }
 
+   //The Full Characters component
    function Characters() {
       const { loading, error, data } = useQuery(GET_CHARACTERES);
 
       if (loading) return <LoadingIndicator />;
 
-      if (error) return <FailedIndicator />;
+      if (error) return <NoticeCell />;
 
       return (
          <Box>
@@ -83,12 +167,13 @@ const Home = () => {
       );
    }
 
+   // The view
    return (
       <Box minH="100vh" w="100%">
-         <Flex direction="row">
+         <Flex direction="row" position="relative">
             <Box
-               minW="350px"
-               h="100%"
+               w="350px"
+               minH="100vh"
                top="52px"
                left="0px"
                bg="#fff"
@@ -96,7 +181,9 @@ const Home = () => {
             >
                <Characters />
             </Box>
-            <Box position="relative">{idx !== -1 && <Detail idx={idx} />}</Box>
+            <Box justifyContent="center" w="100%">
+               {idx !== -1 && <Detail idx={idx} />}
+            </Box>
          </Flex>
       </Box>
    );

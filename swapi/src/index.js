@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
 
 //Providers
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
@@ -31,11 +30,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
    <ApolloProvider client={client}>
-      <Router>
-         <ChakraProvider theme={theme}>
-            <App />
-         </ChakraProvider>
-      </Router>
+      <ChakraProvider theme={theme}>
+         <App />
+      </ChakraProvider>
    </ApolloProvider>,
    document.getElementById("root")
 );
